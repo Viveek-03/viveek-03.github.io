@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viveek Murugan — Associate Quality Analyst</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-sec: #f7f7f5;
+      --text: #1a1a1a;
+      --text-sec: #555550;
+      --text-ter: #999990;
+      --border: rgba(0,0,0,0.1);
+      --border-sec: rgba(0,0,0,0.18);
+      --accent: #185FA5;
+      --accent-bg: #E6F1FB;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .nav-logo { font-size: 18px; font-weight: 500; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-sec);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--accent-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 500; color: var(--accent);
+      margin: 0 auto 1.5rem;
+    }
+    .hero h1 { font-size: 36px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
+    .hero-role { font-size: 16px; color: var(--accent); font-weight: 500; margin-bottom: 1rem; }
+    .hero-bio {
+      font-size: 15px; color: var(--text-sec);
+      max-width: 560px; margin: 0 auto 2rem; line-height: 1.75;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px;
+      border: 0.5px solid var(--border-sec);
+      border-radius: var(--radius-md);
+      font-size: 14px; color: var(--text);
+      background: transparent; cursor: pointer;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .btn:hover { background: var(--bg-sec); }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 2rem; border-bottom: 0.5px solid var(--border); }
+    .section-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--text-ter); margin-bottom: 0.4rem;
+    }
+    .section-title { font-size: 22px; font-weight: 500; margin-bottom: 2rem; }
+
+    /* ABOUT */
+    .about-box {
+      background: var(--bg-sec);
+      border-radius: var(--radius-lg);
+      padding: 2rem; max-width: 720px;
+    }
+    .about-box p { font-size: 15px; line-height: 1.8; color: var(--text-sec); }
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 1.5rem;
+    }
+    .stat {
+      text-align: center; padding: 1rem;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      border: 0.5px solid var(--border);
+    }
+    .stat-num { font-size: 24px; font-weight: 500; color: var(--accent); }
+    .stat-lbl { font-size: 12px; color: var(--text-ter); margin-top: 2px; }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-badge {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px; color: var(--text-sec);
+      background: var(--bg-sec);
+    }
+    .skill-badge i { font-size: 15px; color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .project-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: var(--radius-md);
+      background: var(--accent-bg); color: var(--accent);
+      width: fit-content;
+    }
+    .project-card h3 { font-size: 17px; font-weight: 500; }
+    .project-desc { font-size: 13px; color: var(--text-sec); line-height: 1.7; flex: 1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .tag-pill {
+      font-size: 11px; padding: 3px 9px;
+      border-radius: 999px;
+      border: 0.5px solid var(--border);
+      color: var(--text-ter);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .contact-card {
+      display: flex; align-items: center; gap: 12px;
+      padding: 1rem 1.25rem;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+    }
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      background: var(--accent-bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon i { font-size: 17px; color: var(--accent); }
+    .contact-label { font-size: 11px; color: var(--text-ter); margin-bottom: 2px; }
+    .contact-value { font-size: 13px; font-weight: 500; word-break: break-all; }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-ter);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero h1 { font-size: 28px; }
+      .about-stats { grid-template-columns: 1fr; }
+      section { padding: 2.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">Viveek M.</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar">VM</div>
+    <h1>Viveek Murugan</h1>
+    <p class="hero-role">Associate Quality Analyst</p>
+    <p class="hero-bio">
+      Passionate QA professional specializing in fintech payment systems. I ensure software
+      reliability through meticulous testing, SWIFT message validation, and cross-functional
+      collaboration — delivering quality at every stage of the SDLC.
+    </p>
+    <a href="#contact" class="btn">
+      <i class="ti ti-mail"></i> Get in touch
+    </a>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About me</p>
+    <h2 class="section-title">Who I am</h2>
+    <div class="about-box">
+      <p>
+        I am an Associate Quality Analyst with hands-on experience in the fintech domain,
+        focusing on cross-border and domestic payment products. My expertise spans end-to-end
+        testing of trade settlements, OFAC compliance, SWIFT messaging (MT103, MT202COV,
+        MT940/MT950), and ISO 20022 messages. I thrive in agile environments, collaborating
+        closely with development and product teams to deliver robust, defect-free releases.
+      </p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">2+</div>
+          <div class="stat-lbl">Projects delivered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-lbl">Applications tested</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-lbl">Agile workflow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Technical skills</p>
+    <h2 class="section-title">Tools & technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-badge"><i class="ti ti-test-pipe"></i> Manual Testing</div>
+      <div class="skill-badge"><i class="ti ti-coffee"></i> Java</div>
+      <div class="skill-badge"><i class="ti ti-robot"></i> Selenium</div>
+      <div class="skill-badge"><i class="ti ti-bug"></i> JIRA</div>
+      <div class="skill-badge"><i class="ti ti-api"></i> Postman</div>
+      <div class="skill-badge"><i class="ti ti-settings-automation"></i> Jenkins</div>
+      <div class="skill-badge"><i class="ti ti-cloud"></i> AWS</div>
+      <div class="skill-badge"><i class="ti ti-terminal-2"></i> MobaXterm</div>
+      <div class="skill-badge"><i class="ti ti-code"></i> Cursor</div>
+      <div class="skill-badge"><i class="ti ti-sparkles"></i> Claude AI</div>
+      <div class="skill-badge"><i class="ti ti-message-2"></i> SWIFT Messages</div>
+      <div class="skill-badge"><i class="ti ti-file-code"></i> ISO 20022 / MX</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Work experience</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-tag"><i class="ti ti-building-bank"></i> Fintech</span>
+        <h3>FXSTAR</h3>
+        <p class="project-desc">
+          Tested three core applications — FXOFFICE, FXDESK, and FXBOSS-FXRETAIL — for Finzly,
+          a growing fintech offering cross-border and domestic US payment products via microservices.
+          Verified trade settlements, memo posts, OFAC compliance, confirmations, and EOD reports.
+          Reviewed SWIFT messages (MT103, MT202COV, MT199, MT940/MT950) and ISO 20022 messages
+          (pacs.008, pacs.009, pacs.009.cov). Participated in daily stand-ups and collaborated
+          with development and product teams to ensure quality deliverables.
+        </p>
+        <div class="tag-row">
+          <span class="tag-pill">SWIFT MT</span>
+          <span class="tag-pill">ISO 20022</span>
+          <span class="tag-pill">OFAC</span>
+          <span class="tag-pill">JIRA</span>
+          <span class="tag-pill">Microservices</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag"><i class="ti ti-arrows-exchange"></i> Trade Finance</span>
+        <h3>EXIM STAR</h3>
+        <p class="project-desc">
+          Tested EXIMOFFICE and EXIM WEB applications covering Import & Export LC, Standby
+          incoming/outgoing LC, and Collection incoming/outgoing workflows. Gained understanding
+          of various banking roles — confirming, advising, negotiating, reimbursing, and issuing
+          banks. Validated MT7xxx, MT4xxx, MT202, and pacs.009 messages, with deep involvement
+          in EOD accounting entries verification.
+        </p>
+        <div class="tag-row">
+          <span class="tag-pill">Trade Finance</span>
+          <span class="tag-pill">LC Testing</span>
+          <span class="tag-pill">MT7xxx / MT4xxx</span>
+          <span class="tag-pill">EOD Accounting</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-mail"></i></div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">viveekmurugan@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-phone"></i></div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+91 75400 77857</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="ti ti-map-pin"></i></div>
+        <div>
+          <div class="contact-label">Availability</div>
+          <div class="contact-value">Open to opportunities</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Crafted with care · Viveek Murugan © 2026
+  </footer>
+
+</body>
+</html>
