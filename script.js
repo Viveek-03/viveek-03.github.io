@@ -71,6 +71,34 @@ function draw() {
 }
 draw();
 
+// ===== NAV SCROLL EFFECT =====
+const nav = document.querySelector('nav');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id], div.hero');
+
+window.addEventListener('scroll', () => {
+  // Add scrolled class for solid bg
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+
+  // Active link highlight based on scroll position
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    if (window.scrollY >= top) current = sec.getAttribute('id') || 'hero';
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+});
+
 // ===== SCROLL REVEAL =====
 const reveals = document.querySelectorAll('.reveal');
 
