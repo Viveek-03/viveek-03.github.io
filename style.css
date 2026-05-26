@@ -39,41 +39,112 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(15, 15, 26, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+  padding: 1rem 2.5rem;
+  background: rgba(15, 15, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(108, 99, 255, 0.25);
+  animation: navSlideDown 0.7s cubic-bezier(0.16,1,0.3,1) both;
+  transition: background 0.4s, box-shadow 0.4s;
 }
 
+nav.scrolled {
+  background: rgba(15, 15, 26, 0.95);
+  box-shadow: 0 4px 40px rgba(108, 99, 255, 0.15);
+}
+
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated gradient border at bottom of nav */
+nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--accent1), var(--accent2), var(--accent3), transparent);
+  background-size: 200%;
+  animation: borderFlow 4s linear infinite;
+}
+
+@keyframes borderFlow {
+  0%   { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* Logo */
 .nav-logo {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+  position: relative;
+  cursor: default;
+}
+
+/* Logo glow pulse */
+.nav-logo::before {
+  content: 'VM';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: blur(8px);
+  opacity: 0.5;
+  animation: logoPulse 3s ease-in-out infinite;
+  z-index: -1;
 }
 
-.nav-links { display: flex; gap: 1.5rem; }
+@keyframes logoPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.7; }
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
 
 .nav-links a {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text2);
   text-decoration: none;
-  transition: color 0.2s;
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.2s;
   position: relative;
+  letter-spacing: 0.3px;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  transition: width 0.3s;
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(108, 99, 255, 0.12);
+  border-color: rgba(108, 99, 255, 0.35);
+  transform: translateY(-1px);
 }
 
-.nav-links a:hover { color: var(--text); }
-.nav-links a:hover::after { width: 100%; }
+.nav-links a.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(108,99,255,0.3), rgba(255,101,132,0.2));
+  border-color: rgba(108, 99, 255, 0.5);
+}
+
+/* Staggered link entrance */
+.nav-links a:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
+.nav-links a:nth-child(2) { animation: fadeUp 0.5s 0.2s ease both; }
+.nav-links a:nth-child(3) { animation: fadeUp 0.5s 0.3s ease both; }
+.nav-links a:nth-child(4) { animation: fadeUp 0.5s 0.4s ease both; }
 
 /* ===== HERO ===== */
 .hero {
