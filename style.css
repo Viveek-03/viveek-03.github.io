@@ -193,7 +193,15 @@ nav::after {
 .ci1{background:linear-gradient(135deg,var(--accent1),var(--accent2))}
 .ci2{background:linear-gradient(135deg,var(--accent3),#0099ff)}
 .ci3{background:linear-gradient(135deg,#0077B5,#00a0dc)}
-.ci4{background:linear-gradient(135deg,#333,#666)}
+.hero-company {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 18px; border-radius: 50px; margin-bottom: 1.2rem;
+  background: rgba(67,198,172,0.12);
+  border: 1px solid rgba(67,198,172,0.35);
+  font-size: 13px; font-weight: 600; color: var(--accent3);
+  animation: fadeUp 0.95s ease both;
+}
+.ci5 { background: linear-gradient(135deg, var(--accent3), var(--accent1)); }
 .contact-label{font-size:11px;color:var(--text2);margin-bottom:3px}
 .contact-value{font-size:13px;font-weight:600;word-break:break-all}
 
